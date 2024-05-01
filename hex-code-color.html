@@ -5,27 +5,96 @@
     <title>HEX-code colour</title>
     <style>
         .box{
-            width: 100px;
-            height: 100px;
+            width: 20px;
+            height: 20px;
             border-radius: 5px;
             margin: 5px;
             border: 1px solid black;
             float: left;
+            cursor: pointer;
         }
+        .mode-2 .box {
+            cursor: grab;
+        }
+        .draw {
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            border: 1px dashed black;
+        }
+        .draw .box {
+            float: left;
+            border: none;
+            margin: 0;
+            width: 5px;
+            height: 5px;
+        }
+
     </style>
     <script>
-        function colour (element) {
-            var color = document.getElementById("hex-color").value;
-            element.style.backgroundColor = color
+        let isPip = false;
+        function colour (event) {
+            if (event.which !== 1) {
+                return;
+            }
+            if (isPip) {
+                document.getElementById("hex-color").value = this.style.backgroundColor;
+                changeMode();
+            } else {
+                this.style.backgroundColor = document.getElementById("hex-color").value;
+            }
+        }
+        function changeMode () {
+            isPip = !isPip;
+            document.body.classList.toggle("mode-2", isPip);
+        }
+        function clearDraw () {
+            const draw = document.getElementById('draw');
+            for (const box of draw.children) {
+                box.style.backgroundColor = null;
+            }
         }
     </script>
 </head>
 <body>
+    <button onclick="changeMode()">Пипетка</button>
+    <button onclick="clearDraw()">Очистить</button>
     <input type="text" id="hex-color">
     <br>
-    <div class="box" onclick="colour(this)"></div>
-    <div class="box" onclick="colour(this)"></div>
-    <div class="box" onclick="colour(this)"></div>
-    <div class="box" onclick="colour(this)"></div>
+    <div id="palette">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+    <br>
+    <div class="draw" id="draw"></div>
+    <script>
+        const draw = document.getElementById('draw');
+        for (let i = 0; i < 3600; i++) {
+            const box = document.createElement('div');
+            box.classList.add('box');
+            box.addEventListener('mousemove', colour);
+            draw.appendChild(box);
+        }
+        const palette = document.getElementById('palette');
+        const colors = palette.children;
+        for (const color of colors) {
+            color.addEventListener('click', colour);
+        }
+        colors[0].style.backgroundColor = 'red';
+        colors[1].style.backgroundColor = 'orange';
+        colors[2].style.backgroundColor = 'yellow';
+        colors[3].style.backgroundColor = 'green';
+        colors[4].style.backgroundColor = 'blue';
+        colors[5].style.backgroundColor = 'purple';
+        colors[6].style.backgroundColor = 'black';
+    </script>
 </body>
 </html>
