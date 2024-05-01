@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>+1 score click button</title>
+    <script>
+        let value = 0;
+        function increment () {
+            value++;
+            refresh();
+        }
+        function say () {
+            alert('ваш счёт ' + value)
+        }
+        function decrement () {
+            value--;
+            refresh();
+        }
+        function refresh () {
+           const score = document.getElementById('score');
+           score.textContent =  '' + value;
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="+1 очка" onclick="increment()">
+    <input type="button" value="-1 очка" onclick="decrement()">
+    <input type="button" value="показать счёт" onclick="say()">
+    <br>
+    <p>счёт: <span id="score">0</span></p>
+</body>
+</html>

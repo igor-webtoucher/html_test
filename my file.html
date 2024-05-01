@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>хранение</title>
+</head>
+<body>
+    <input type="text" id="box" value="" placeholder="введи задачу сюда"/><br>
+    <input type="button" id="save" value="сохранить" onclick="save();"/><br/>
+    <input type="button" id="load" value="загрузить" onclick="load();"/><br/>
+    <input type="button" id="delete" value="удалить" onclick="delete ();"/><br/>
+
+    сохраненый элемент: <div id="savedlist"></div>
+</body>
+</html>
+<script>
+     function save(){
+        localStorage.box = document.getElementById("box").value;
+     }
+     function load(){
+        var savedDiv = document.getElementById("savedlist");
+        savedDiv.innerHTML = localStorage.box;
+     }
+</script>

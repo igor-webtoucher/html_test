@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+    function setLimitation() {
+        var value1 = document.getElementById("password1").value;
+        var value2 = document.getElementById("password2").value;
+        if (value1.length === 0) {
+            alert('Please enter the code!')
+            return false;
+        }
+        if (value1 !== value2) {
+            alert('wrong password!')
+            return false;
+        }
+        localStorage.setItem('limitation',value2);
+        alert('the action is completed!')
+    }
+    function removeLimitation() {
+        localStorage.removeItem('limitation');
+    }
+    </script>
+</head>
+<body>
+    <input id="password1" type="password" placeholder="enter the code!">
+    <input id="password2" type="password" placeholder="repeat the code!">
+    <input type="button" onclick="setLimitation()" value="save">
+    <br>
+    <input type="button" onclick="removeLimitation()" value="remove limitations!">
+    <br>
+    <input type="button" onclick="history.back()" value="They will return">
+</body>
+</html>
