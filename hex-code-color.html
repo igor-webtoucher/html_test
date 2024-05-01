@@ -16,6 +16,10 @@
         .mode-2 .box {
             cursor: grab;
         }
+        .mode-2 .pip {
+            font-weight: bold;
+            background-color: chartreuse;
+        }
         .draw {
             margin-top: 20px;
             width: 300px;
@@ -57,7 +61,7 @@
     </script>
 </head>
 <body>
-    <button onclick="changeMode()">Пипетка</button>
+    <button class="pip" onclick="changeMode()">Пипетка</button>
     <button onclick="clearDraw()">Очистить</button>
     <input type="text" id="hex-color">
     <br>
