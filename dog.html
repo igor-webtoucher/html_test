@@ -48,6 +48,17 @@
           border: aqua dashed 5px;
       }
     </style>
+    <script>
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+        if (!getCookie('auth')) {
+            window.location.replace('password.html');
+        }
+    </script>
 </head>
 <body>
 <div class="title">Милые собачки</div>
