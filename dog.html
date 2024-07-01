@@ -55,7 +55,7 @@
             ));
             return matches ? decodeURIComponent(matches[1]) : undefined;
         }
-        if (!getCookie('auth')) {
+        if (!getCookie('auth') && localStorage.savedPassword) {
             window.location.replace('password.html');
         }
     </script>
