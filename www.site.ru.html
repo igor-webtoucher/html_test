@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>https://www.site.ru</title>
+    <script>
+        function checkCode() {
+            const scriptedCode = document.getElementById("codeScript")
+            const value = scriptedCode.value;
+            if (value === 'ValueCodeIf') {
+                const a = document.getElementById("222")
+                a.style.display = 'block'
+            } else if (!value){
+                alert ('no password!')
+            } else {
+                alert('try again!')
+            }
+
+        }
+        function hideA() {
+            const a = document.getElementById("222")
+            a.style.display = 'none'
+        }
+    </script>
+</head>
+<body>
+<h1>Welcome to the website!</h1>
+<a href="www.2Site.ru.html" style="display: none" id="222">to the 2nd site</a>
+<input type="text" placeholder="enter code!" id="codeScript" autocomplete="off">
+<input type="button" value="check the code" onclick="checkCode()">
+<input type="button" value="hide the code" onclick="hideA()">
+</body>
+</html>
